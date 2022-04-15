@@ -1,31 +1,27 @@
 <template>
     <div>
-        <div class="topNav">
-            <div class="logo"></div>
-            <div class="menu"></div>
-        </div>
+        <TopNav/>
         <div class="banner">
             <h1>UI</h1>
             <h2>一个厉害的UI框架</h2>
             <p class="actions">
-                <a > GitHub</a>
-                <a >开始</a>
+                <a href="https://github.com/"> GitHub</a>
+                <router-link to="/doc" >开始</router-link>
             </p>
         </div>
     </div>
 
 </template>
 
-<!--<script lang="ts">-->
-<!--  import Vue from 'vue';-->
-<!--  import {Component} from 'vue-property-decorator';-->
-
-<!--  @Component-->
-<!--  export default class home extends Vue {-->
-
-<!--  }-->
-<!--</script>-->
+<script lang="ts">
+  import TopNav from'../components/Topnav.vue'
+  export default {
+   components:{TopNav}
+ }
+</script>
 
 <style lang="scss" scoped>
-
+    .topNav{
+        border:1px solid red;
+    }
 </style>

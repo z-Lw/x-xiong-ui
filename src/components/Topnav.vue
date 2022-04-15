@@ -1,6 +1,7 @@
 <template>
-    <div>
-        xxx
+    <div class="topNav">
+        <div class="logo"></div>
+        <div class="menu"></div>
     </div>
 
 </template>

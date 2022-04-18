@@ -29,7 +29,10 @@ import {inject,Ref} from 'vue'
         background: pink;
         display: flex;
         padding: 16px;
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         z-index: 10;
         >.logo{
             max-width: 6em;

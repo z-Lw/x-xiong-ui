@@ -1,7 +1,7 @@
 <template>
         <div class="gulu-tabs">
             <div class="gulu-tabs-nav" ref="container">
-                <div class="gulu-tabs-nav-item" :ref="el=>{if(el)NavItems[index] = el}" :class="{selected: t===selected}" v-for="(t,index) in titles" :key="index"@click="select(t)">{{t}}</div>
+                <div class="gulu-tabs-nav-item" :ref="el=>{if(t===selected) selectedItem = el}" :class="{selected: t===selected}" v-for="(t,index) in titles" :key="index"@click="select(t)">{{t}}</div>
                 <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
             </div>
             <div class="gulu-tabs-content">
@@ -15,58 +15,51 @@
 </template>
 
 <script lang="ts">
-import Tab from './Tab.vue'
-import {ref,onMounted , onUpdated} from 'vue'
-    export default {
-  props:{
-    selected:{
-      type :String
+
+import Tab from './Tab.vue';
+import {ref, watchEffect, onMounted} from 'vue';
+
+export default {
+  props: {
+    selected: {
+      type: String
     }
   },
-    components:{Tab},
-    setup(props,context){
-      const NavItems= ref<HTMLDivElement>([])
-      const indicator = ref<HTMLDivElement> (null)
-      const container = ref <HTMLDivElement>(null)
-      onMounted(()=>{
-        const divs =NavItems.value
-        const result = divs.filter(div=>div.classList.contains('selected'))[0]
-        const {width}=result.getBoundingClientRect()
-        indicator.value.style.width =width+'px'
-        const {left:left1} =container.value.getBoundingClientRect()
-        const {left:left2} = result.getBoundingClientRect()
-        const  left =left2-left1
-        indicator.value.style.left=left+'px'
+  components: {Tab},
+  setup(props, context) {
+    const selectedItem = ref<HTMLDivElement>(null);
+    const indicator = ref<HTMLDivElement>(null);
+    const container = ref<HTMLDivElement>(null);
+    onMounted(()=>{
+      watchEffect(()=>{
+        const {width} = selectedItem.value.getBoundingClientRect();
+        indicator.value.style.width = width + 'px';
+        const {left: left1} = container.value.getBoundingClientRect();
+        const {left: left2} = selectedItem.value.getBoundingClientRect();
+        const left = left2 - left1;
+        indicator.value.style.left = left + 'px';
       })
-      onUpdated(()=>{
-        const divs =NavItems.value
-        const result = divs.filter(div=>div.classList.contains('selected'))[0]
-        const {width}=result.getBoundingClientRect()
-        indicator.value.style.width =width+'px'
-        const {left:left1} =container.value.getBoundingClientRect()
-        const {left:left2} = result.getBoundingClientRect()
-        const  left =left2-left1
-        indicator.value.style.left=left+'px'
-      })
-      const defaults = context.slots.default()
-      defaults.forEach((tag)=>{
-        if(tag.type!==Tab){
-          throw new Error('Tabs子标签必须是Tab')
-        }
-      })
-      const titles = defaults.map((tag)=>{
-        return tag.props.title
-      })
-      const select=(tag)=>{
-            context.emit('update:selected',tag)
+    })
 
+    const defaults = context.slots.default();
+    defaults.forEach((tag) => {
+      if (tag.type !== Tab) {
+        throw new Error('Tabs子标签必须是Tab');
       }
-      return {
-        defaults,titles,select,NavItems,indicator,container
-      }
+    });
+    const titles = defaults.map((tag) => {
+      return tag.props.title;
+    });
+    const select = (tag) => {
+      context.emit('update:selected', tag);
 
-    }
-    }
+    };
+    return {
+      defaults, titles, select, selectedItem, indicator, container
+    };
+
+  }
+};
 </script>
 
 <style lang="scss">

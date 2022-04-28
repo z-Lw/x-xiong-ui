@@ -1,7 +1,7 @@
 <template>
         <div class="gulu-tabs">
             <div class="gulu-tabs-nav" ref="container">
-                <div class="gulu-tabs-nav-item" :ref="el=>{if(t===selected) selectedItem = el}" :class="{selected: t===selected}" v-for="(t,index) in titles" :key="index"@click="select(t)">{{t}}</div>
+                <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }" @click="select(t)" :class="{selected: t=== selected}" :key="index">{{t}}</div>
                 <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
             </div>
             <div class="gulu-tabs-content">

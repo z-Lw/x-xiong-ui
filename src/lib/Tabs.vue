@@ -5,10 +5,7 @@
                 <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
             </div>
             <div class="gulu-tabs-content">
-                <component class="gulu-tabs-content-item"
-                           v-for="(c,index) in defaults" :is="c" :key="index"
-                            :class="{selected: c.props.title ===selected}"
-                />
+                <component :is="current" :key="current.props.title" />
          </div>
     </div>
 
@@ -17,7 +14,7 @@
 <script lang="ts">
 
 import Tab from './Tab.vue';
-import {ref, watchEffect, onMounted} from 'vue';
+import {ref, watchEffect, onMounted,computed} from 'vue';
 
 export default {
   props: {
@@ -40,7 +37,9 @@ export default {
         indicator.value.style.left = left + 'px';
       })
     })
-
+    const current = computed(() => {
+      return defaults.find(tag => tag.props.title === props.selected)
+    })
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -55,7 +54,7 @@ export default {
 
     };
     return {
-      defaults, titles, select, selectedItem, indicator, container
+      defaults, titles, select, selectedItem, indicator, container,current
     };
 
   }
@@ -95,12 +94,7 @@ export default {
         }
         &-content {
             padding: 8px 0;
-            &-item {
-                display: none;
-                &.selected {
-                    display: block;
-                }
-            }
+
         }
     }
 </style>

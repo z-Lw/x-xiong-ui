@@ -1,11 +1,18 @@
 <template>
     <div class="topNav">
-        <div class="logo" >LOGO</div>
+        <div class="logo" >
+            <router-link to="/">
+                <svg class="icon">
+                    <use xlink:href="#icon-home"></use>
+                </svg>
+            </router-link>
+        </div>
         <ul class="menu">
-            <li>菜单1</li>
-            <li>菜单2</li>
+            <li>
+                <router-link to="/doc">文档</router-link>
+            </li>
         </ul>
-        <span class="toggleAside" @click="toggleMenu"></span>
+<!--        <span class="toggleAside" @click="toggleMenu"></span>-->
     </div>
 </template>
 
@@ -26,17 +33,23 @@ import {inject,Ref} from 'vue'
 
 <style lang="scss" scoped>
     .topNav{
-        background: pink;
+        background: #fff;
         display: flex;
         padding: 16px;
         position: fixed;
+        border-bottom: 1px solid #eaecef;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 10;
+
         >.logo{
             max-width: 6em;
             margin-right: auto;
+            *> svg {
+                width: 32px;
+                height: 32px;
+            }
         }
         >.menu{
             display: flex;
@@ -59,8 +72,10 @@ import {inject,Ref} from 'vue'
         }
         @media (max-width:500px) {
             > .menu{display: none;}
-            > .logo{margin:0 auto;}
             > .toggleAside{display: inline-block;}
+        }
+        *> a:hover{
+            text-decoration: none;
         }
     }
 

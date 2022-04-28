@@ -11,14 +11,10 @@
     ref
   } from 'vue'
   export default {
-    components: {
-      Switch,
-    },
+    components: {Switch,},
     setup() {
       const bool = ref(false)
-      return {
-        bool
-      }
+      return {bool}
     }
   }
 </script>

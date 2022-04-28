@@ -31,7 +31,7 @@
                         <use xlink:href="#icon-lightbulb"></use>
                     </svg>
                     <h3>代码易读</h3>
-                    <p>每个组件的源代码都极其简洁</p>
+                    <p>源代码采用 TypeScript 书写</p>
                 </li>
             </ul>
     </div>
@@ -50,17 +50,27 @@
     $border-radius: 4px;
     $color: #007974;
     .topnavAndBanner {
-        background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+        background: #e4effe;
         clip-path: ellipse(80% 60% at 50% 40%);
     }
     .features {
         margin: 64px auto;
-        width: 400px;
+        padding: 0 16px;
         @media (min-width: 800px) {
             width: 800px;
+            >ul {
+                >li {
+                    width: 50%;
+                }
+            }
         }
         @media (min-width: 1200px) {
             width: 1200px;
+            >ul {
+                >li {
+                    width: 33.3333%;
+                }
+            }
         }
 
         > ul {

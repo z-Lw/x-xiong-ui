@@ -1,7 +1,7 @@
 <template>
 
         <div class="layout">
-            <TopNav class="nav" />
+            <TopNav toggleMenuButtonVisible class="nav" />
         <div class="content">
             <aside v-if="menuVisible">
                 <h2>文档</h2>
@@ -53,6 +53,7 @@
 </script>
 
 <style lang="scss" scoped>
+    $aside-index : 10;
     .layout {
         display: flex;
         flex-direction: column;
@@ -81,13 +82,14 @@
         }
     }
     aside {
-        background: lightblue;
+        background: #e4effe;
         width: 150px;
         position: fixed;
         top: 0;
         left: 0;
         padding: 70px 0 16px;
         height: 100%;
+        z-index: $aside-index;
         >h2 {
             margin-bottom: 4px;
             padding: 0 16px;

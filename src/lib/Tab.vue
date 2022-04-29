@@ -5,8 +5,11 @@
 
 </template>
 
-<script lang="ts">
 
+<script lang="ts">
+  export default {
+    name: 'GuluTab'
+  }
 </script>
 
 <style lang="scss" scoped>

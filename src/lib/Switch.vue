@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-    import {ref} from 'vue'
+
 export default {
   props: {
     value: Boolean,
@@ -37,7 +37,7 @@ export default {
             top: 2px; left: 2px;
             height: $h2; width: $h2;
             background: white;
-            border-radius: $h2 / 2;
+            border-radius: 11px;
             transition: all 250ms;
         }
         &.gulu-checked { background: #1890ff;

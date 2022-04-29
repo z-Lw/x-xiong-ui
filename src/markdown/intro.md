@@ -1,6 +1,6 @@
 # 介绍
 
-Vue UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
+x-xiong-ui  是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 
 这款组件库是本人作为练手Vue3项目而编写，界面设计参考了Element UI网站的配色和功能。
 

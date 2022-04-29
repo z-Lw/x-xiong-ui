@@ -2,7 +2,7 @@
         <div class="topnavAndBanner">
             <TopNav />
             <div class="banner">
-                <h1>轱辘UI</h1>
+                <h1>ฅʕ•̫͡•ʔฅUI</h1>
                 <h2>一个厉害的 UI 框架</h2>
                 <p class="actions">
                     <a href="https://github.com">GitHub</a>
@@ -51,7 +51,7 @@
     $color: #007974;
     .topnavAndBanner {
         background: #e4effe;
-        clip-path: ellipse(80% 60% at 50% 40%);
+        clip-path:ellipse(80% 60% at 50% 40%);
     }
     .features {
         margin: 64px auto;
@@ -78,7 +78,6 @@
             flex-wrap: wrap;
 
             > li {
-                width: 400px;
                 margin: 16px 0;
                 display: grid;
                 justify-content: start;
